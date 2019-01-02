@@ -234,20 +234,20 @@ text\<open>Hint: ``fun'' does not work here (at least not without providing a no
 (** ordered n i t : all variables x in t are increasing on branches and i <= x < n *)
  
 (* a completer: *)
-inductive ordered :: "nat \<Rightarrow> nat \<Rightarrow> bdt \<Rightarrow> bool" 
+inductive ordered :: "nat \<Rightarrow> nat \<Rightarrow> bdt \<Rightarrow> bool"
 where     Oatom : "ordered x y (Atom a)"
-         |Oif   : "i\<le>x \<and> x < n 
-                   \<Longrightarrow> ordered n (Suc x) l
-                   \<Longrightarrow> ordered n (Suc x) r
+         |Oif   : "i \<le> x \<and> x < n 
+                   \<Longrightarrow> ordered n x l
+                   \<Longrightarrow> ordered n x r
                    \<Longrightarrow> ordered n i (IF x l r)"
-(*
-or alternative:
-*)
 
-fun ordered' :: "nat \<Rightarrow> nat \<Rightarrow> bdt \<Rightarrow> bool" 
+(* or alternative: *)
+
+fun ordered' :: "nat \<Rightarrow> nat \<Rightarrow> bdt \<Rightarrow> bool"
   where  "ordered' x y (Atom a) = True"
-        |"ordered' n i (IF x l r) = (if i\<le>x \<and> x<n then True else False)"  
-
+        |"ordered' n i (IF x l r) = (if i \<le> x \<and> x < n
+                                      then ordered' n x l \<and> ordered' n x r
+                                      else False)"
 
 (* for fun *)
 fun     fv :: "bdt \<Rightarrow> nat set" 
