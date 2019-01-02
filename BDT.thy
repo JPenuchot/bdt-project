@@ -73,10 +73,13 @@ where "neg (Atom a) =  Atom (\<not> a)"
      |"neg (IF x l r) = IF x (neg l) (neg r)"
 
 
+find_theorems name:BDT.neg
 
 lemma negt_corr : "I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>neg P\<rbrakk> I = (\<not> I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>P\<rbrakk> I)"
-  sorry (* a completer *)
-
+  apply(rule BDT.neg.induct)
+  apply(simp)
+  sorry
+  
 
 
 section\<open>BinaryCombination.\<close>
