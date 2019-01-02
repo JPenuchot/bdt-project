@@ -118,7 +118,7 @@ Fixpoint bint (t u: bdt) : bdt :=
 
 
 lemma comb_eq : "comb opn (IF x l r) (IF x l' r') = (IF x (comb opn l l') (comb opn r r'))"
-  by(simp)
+  by(clarsimp)
 
 lemma comb_le : "x < y \<Longrightarrow> comb opn (IF x l r) (IF y l' r') 
                            = (IF x (comb opn l (IF y l' r')) (comb opn r (IF y l' r')))"
@@ -232,19 +232,21 @@ text\<open>Hint: ``fun'' does not work here (at least not without providing a no
      ordering) since it chooses the lexicographic ordering as default ... \<close>
 
 (** ordered n i t : all variables x in t are increasing on branches and i <= x < n *)
-
-consts ordered :: "nat \<Rightarrow> nat \<Rightarrow> bdt \<Rightarrow> bool" 
-(* a completer:
-inductive          ordered :: "nat \<Rightarrow> nat \<Rightarrow> bdt \<Rightarrow> bool" 
-where     Oatom : "..."
-        | Oif   : "..."
-
+ 
+(* a completer: *)
+inductive ordered :: "nat \<Rightarrow> nat \<Rightarrow> bdt \<Rightarrow> bool" 
+where     Oatom : "ordered x y (Atom a)"
+         |Oif   : "i\<le>x \<and> x < n 
+                   \<Longrightarrow> ordered n (Suc x) l
+                   \<Longrightarrow> ordered n (Suc x) r
+                   \<Longrightarrow> ordered n i (IF x l r)"
+(*
 or alternative:
-
-fun ordered :: "nat \<Rightarrow> nat \<Rightarrow> bdt \<Rightarrow> bool" 
-where ...
 *)
 
+fun ordered' :: "nat \<Rightarrow> nat \<Rightarrow> bdt \<Rightarrow> bool" 
+  where  "ordered' x y (Atom a) = a"
+        |"ordered' x y (IF v l r) = (if i\<le>x \<and> x < n then True else False)"  
 
 
 (* for fun *)
