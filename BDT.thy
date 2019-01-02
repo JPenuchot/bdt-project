@@ -245,8 +245,8 @@ or alternative:
 *)
 
 fun ordered' :: "nat \<Rightarrow> nat \<Rightarrow> bdt \<Rightarrow> bool" 
-  where  "ordered' x y (Atom a) = a"
-        |"ordered' x y (IF v l r) = (if i\<le>x \<and> x < n then True else False)"  
+  where  "ordered' x y (Atom a) = True"
+        |"ordered' n i (IF x l r) = (if i\<le>x \<and> x<n then True else False)"  
 
 
 (* for fun *)
