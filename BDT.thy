@@ -126,7 +126,7 @@ lemma comb_le : "x < y \<Longrightarrow> comb opn (IF x l r) (IF y l' r')
 
 lemma comb_ge : "y < x \<Longrightarrow> comb opn (IF x l r) (IF y l' r')
                            = IF y (comb opn (IF x l r) l') (comb opn (IF x l r) r')"
-  sorry
+  by(simp)
 
 
 (** Instantiation on standard boolean operations *)
