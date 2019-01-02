@@ -77,8 +77,7 @@ find_theorems name:BDT.neg
 
 lemma negt_corr : "I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>neg P\<rbrakk> I = (\<not> I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>P\<rbrakk> I)"
   apply(rule BDT.neg.induct)
-  apply(simp)
-  sorry
+  apply(auto)
   
 
 
