@@ -97,6 +97,7 @@ definition opn where "opn x y \<equiv> x \<or> y"
 
 value "comb opn (Atom True) (Atom False)" 
 
+
 (*
 Comparison with Coq: the following intuitive definition is not directly accepted 
 Fixpoint bint (t u: bdt) : bdt := 
@@ -117,7 +118,7 @@ Fixpoint bint (t u: bdt) : bdt :=
 
 
 lemma comb_eq : "comb opn (IF x l r) (IF x l' r') = (IF x (comb opn l l') (comb opn r r'))"
-  sorry
+  by(simp)
 
 lemma comb_le : "x < y \<Longrightarrow> comb opn (IF x l r) (IF y l' r') 
                            = (IF x (comb opn l (IF y l' r')) (comb opn r (IF y l' r')))"
