@@ -77,7 +77,7 @@ find_theorems name:BDT.neg
 
 lemma negt_corr : "I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>neg P\<rbrakk> I = (\<not> I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>P\<rbrakk> I)"
   apply(rule BDT.neg.induct)
-  apply(auto)
+  by(auto)
   
 
 
@@ -92,6 +92,11 @@ fun comb where
                             else if y < x then IF y (comb opn (IF x l r) l')(comb opn (IF x l r) r')
                                           else IF x (comb opn l l') (comb opn r r'))"
 find_theorems name:comb
+
+definition opn where "opn x y \<equiv> x \<or> y"
+
+value "comb opn (Atom True) (Atom False)" 
+
 (*
 Comparison with Coq: the following intuitive definition is not directly accepted 
 Fixpoint bint (t u: bdt) : bdt := 
