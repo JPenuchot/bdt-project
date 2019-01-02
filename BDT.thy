@@ -122,7 +122,7 @@ lemma comb_eq : "comb opn (IF x l r) (IF x l' r') = (IF x (comb opn l l') (comb 
 
 lemma comb_le : "x < y \<Longrightarrow> comb opn (IF x l r) (IF y l' r') 
                            = (IF x (comb opn l (IF y l' r')) (comb opn r (IF y l' r')))"
-  sorry
+  by(simp)
 
 lemma comb_ge : "y < x \<Longrightarrow> comb opn (IF x l r) (IF y l' r')
                            = IF y (comb opn (IF x l r) l') (comb opn (IF x l r) r')"
