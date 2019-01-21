@@ -77,9 +77,7 @@ find_theorems name:BDT.neg
 
 lemma negt_corr : "I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>neg P\<rbrakk> I = (\<not> I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>P\<rbrakk> I)"
   apply(rule BDT.neg.induct)
-  by(auto)
-  
-
+  by auto
 
 section\<open>BinaryCombination.\<close>
 
@@ -147,7 +145,6 @@ definition P2   where "P2       = dneg P0 p0"
 value "P1"
 value "P2"
 
-
 (* examples for complicated proofs involving nested inductions ... *)
 lemma comb_correct : "(I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>comb f P Q\<rbrakk> \<gamma>) = f (I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>P\<rbrakk> \<gamma>) (I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>Q\<rbrakk> \<gamma>)"
 apply(rule_tac x=Q in spec)
@@ -178,7 +175,7 @@ next
    and    hyp2 : "\<And>Q. interpret (comb f P2 Q) I  = f (interpret P2 I) (interpret Q I)"
    show "interpret (comb f (IF v P1 P2) Q) I = f (interpret (IF v P1 P2) I ) (interpret Q I )"
         (is "?lhs = ?rhs")
-        txt\<open>this is a pattern-matching against the above ``show'' defining @{term "?lhs"} \<close>
+     txt\<open>this is a pattern-matching against the above ``show'' defining @{term "?lhs"} \<close>
       apply simp 
       proof(cases "I v", simp_all) txt\<open> you might try here @{command print_cases} to check the
                                         environment of local assumptions here ... \<close>
@@ -289,35 +286,35 @@ next
             apply(simp add: Un_left_commute inf_sup_aci(6) insert_commute)
             by blast
      qed
-qed
-
-
+   qed
 
 lemma neg_ordered_inv : "ordered n i P \<Longrightarrow> ordered n i (neg P)"
+  apply(induct P)
+   apply(simp add: Oatom)
+  apply(simp)
+  apply(rule Oif)
+    apply(rule ordered.cases)
+      apply(simp)
+  sorry
+
+lemma XXX : "ordered n x l \<Longrightarrow> ordered n x (comb f l (Atom a))"
+  apply(induct l)
+   apply(simp add : Oatom)
+  find_theorems "ordered"
   sorry
 
 
-lemma XXX : "ordered n x l \<Longrightarrow> ordered n x (comb f l (Atom a))"
-  sorry (* hint: perhaps useful *)
-
-
 lemma XXX' : "ordered n x r \<Longrightarrow> ordered n x (comb f (Atom a) r)"
-  sorry (* hint: perhaps useful *)
-
-
+  sorry
 
 lemma "ordered n i P \<Longrightarrow> ordered n i Q \<Longrightarrow> ordered n i (comb f P Q)"
   sorry
   (* difficult nested induction; one has to provide useful non-obvious geeralizations. *)
 
 
-
-
-
-lemma "ordered n i t \<Longrightarrow> (x < i \<or> n <= x) \<Longrightarrow>  I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>t\<rbrakk> (I(x:= b)) = I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>t\<rbrakk> I" sorry
+lemma "ordered n i t \<Longrightarrow> (x < i \<or> n <= x) \<Longrightarrow>  I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>t\<rbrakk> (I(x:= b)) = I\<^sub>b\<^sub>d\<^sub>t \<lbrakk>t\<rbrakk> I" 
+  sorry
 (* a completer ; main structure: induction over ordered_ness or t. *)
-
-
 
 lemma exists_correct : 
 "ordered n i t \<Longrightarrow> interpret (exist\<^sub>v\<^sub>a\<^sub>r x t) I 
