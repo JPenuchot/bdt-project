@@ -288,17 +288,21 @@ next
      qed
    qed
 
+find_theorems name:BDT
+find_theorems name:BDT.neg
+find_theorems name:BDT.ordered
+
 lemma neg_ordered_inv : "ordered n i P \<Longrightarrow> ordered n i (neg P)"
-  apply(induct P)
-   apply(simp add: Oatom)
-  apply(simp)
+  apply(rule neg.induct)
+  apply(simp add: Oatom)
   apply(rule Oif)
-    apply(rule ordered.cases)
-      apply(simp)
+  
   sorry
 
+  
+
 lemma XXX : "ordered n x l \<Longrightarrow> ordered n x (comb f l (Atom a))"
-  apply(induct l)
+  apply(rule neg.induct)
    apply(simp add : Oatom)
   find_theorems "ordered"
   sorry
