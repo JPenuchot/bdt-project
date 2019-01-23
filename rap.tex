@@ -62,34 +62,29 @@ Les preuves ont été effectuées pour les lemmes suivants :
 
 \subsection{Opérateur interleave}
 
+Nous étions censés faire des recherches pour implémenter l'opérateur interleave dans les expressions régulières. Malheureusement par manque de temps (nous avons changé de sujet au dernier moment) nous nous sommes résolus à en rester sur les preuves pour ce sujet.
 
 \section{Arbres de Décision}
 
 \subsection{Introduction au sujet}
 
 En informatique, un graphe de décision binaire ou diagramme de décision binaire
-est une structure de données utilisée pour représenter des fonctions booléennes,
-ou des questionnaires binaires. On utilise les BDD pour représenter des
-ensembles ou des relations de manière compacte / compressée.
+est une structure de données utilisée pour représenter des fonctions booléennes, ou des questionnaires binaires. On utilise les BDD pour représenter des ensembles ou des relations de manière compacte / compressée.
 
-Nous avons commencé par nous approprier la strcutur du BDT et les fonctions qui permete de les manipuler. Puis nous avons implementer les inductive set tel que
-ordered. Et pour finir nous avons prouvé des lemmes.
+Nous avons commencé par nous approprier la strcuture du BDT et les fonctions qui permetent de les manipuler. Puis nous avons défini les ensembles inductifs tel que ordered, puis pour finir nous avons abordé les preuves des lemmes.
 
 \subsection{Preuve}
 
-Nous avons prouvé le lemme "negt\_corr" qui dis que la negation de
-l'interpretation de l'arbre est egale a l'interpretation de la negation de
-l'arbre. Grace a une preuve par induction.
+Nous avons prouvé le lemme "negt\_corr", c'est-à-dire que la negation de
+l'interpretation de l'arbre est égale a l'interpretation de la negation de
+l'arbre grâce a une preuve par induction.
 
-Les differantes preuve sur les combinaisions binaire (comb\_eq, comb\_le et
-comb\_ge) on etés resolut par simp.
+Les différentes preuves sur les combinaisions binaires (comb\_eq, comb\_le et
+comb\_ge) on été resolues par simplification.
 
-La solution pour definire un BDT trié est d'utiliser un definistion
-inductive qui verifi recursivement si la valeur actuel est bien compri
-entre les 2 valeur precedente.
-Il y a une alternative qui utilise une fonction qui renvoie un bool pour
-dire si l'arbre est trié.
+La solution pour définir un BDT trié est d'utiliser un définition
+inductive qui définit récursivement un BDT trié comme un BDT dont valeur actuelle est comprise entre de ses deux sous-arbres, devant eux-même être triés.
 
-
+Une définition reposant sur un prédicat existe également, cette dernière permet de déterminer facilement et de manière déterministe si un arbre est trié ou non.
 
 \end{document}
