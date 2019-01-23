@@ -67,6 +67,29 @@ Les preuves ont été effectuées pour les lemmes suivants :
 
 \subsection{Introduction au sujet}
 
+En informatique, un graphe de décision binaire ou diagramme de décision binaire
+est une structure de données utilisée pour représenter des fonctions booléennes,
+ou des questionnaires binaires. On utilise les BDD pour représenter des
+ensembles ou des relations de manière compacte / compressée.
+
+Nous avons commencé par nous approprier la strcutur du BDT et les fonctions qui permete de les manipuler. Puis nous avons implementer les inductive set tel que
+ordered. Et pour finir nous avons prouvé des lemmes.
+
+\subsection{Preuve}
+
+Nous avons prouvé le lemme "negt\_corr" qui dis que la negation de
+l'interpretation de l'arbre est egale a l'interpretation de la negation de
+l'arbre. Grace a une preuve par induction.
+
+Les differantes preuve sur les combinaisions binaire (comb\_eq, comb\_le et
+comb\_ge) on etés resolut par simp.
+
+La solution pour definire un BDT trié est d'utiliser un definistion
+inductive qui verifi recursivement si la valeur actuel est bien compri
+entre les 2 valeur precedente.
+Il y a une alternative qui utilise une fonction qui renvoie un bool pour
+dire si l'arbre est trié.
+
 
 
 \end{document}
