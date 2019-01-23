@@ -293,22 +293,20 @@ find_theorems name:BDT.neg
 find_theorems name:BDT.ordered
 
 lemma neg_ordered_inv : "ordered n i P \<Longrightarrow> ordered n i (neg P)"
-  apply(rule neg.induct)
-  apply(simp add: Oatom)
-  apply(rule Oif)
-  
+  apply(induct P)
+   apply(simp add: Oatom)
+  by (smt bdt.inject(2) neg.simps(1) neg.simps(2) order.trans ordered.simps)
   sorry
-
-  
 
 lemma XXX : "ordered n x l \<Longrightarrow> ordered n x (comb f l (Atom a))"
   apply(rule neg.induct)
    apply(simp add : Oatom)
-  find_theorems "ordered"
   sorry
 
 
 lemma XXX' : "ordered n x r \<Longrightarrow> ordered n x (comb f (Atom a) r)"
+  apply(induct r)
+   apply (simp add: Oatom)
   sorry
 
 lemma "ordered n i P \<Longrightarrow> ordered n i Q \<Longrightarrow> ordered n i (comb f P Q)"
