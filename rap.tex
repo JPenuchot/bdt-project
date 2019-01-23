@@ -21,8 +21,46 @@ Nous avons décidé de nous rabattre sur le premier sujet en raison des difficul
 
 \section{Expressions Régulières}
 
-\subsection{Introduction au sujet}
+Ce sujet consiste à prouver un compilateur d'expressions régulières, puis de l'étendre en ajoutant l'opérateur "interleave" tout en prouvant que son ajout ne casse pas la régularité des expressions.
 
+\subsection{Preuves sur les expressions régulières}
+
+Les preuves ont été effectuées pour les lemmes suivants :
+
+\begin{itemize}
+
+
+\item steps\_epsclosure
+
+  Succès de sledgehammer
+
+\item in\_steps\_epsclosure
+
+  Succès de sledgehammer
+
+\item epsclosure\_steps
+
+  Induction requise sur w, non trouvée par sledgehammer. La condition de base et la récurrence ont été prouvées avec succès grâce à sledgehammer
+
+\item steps\_union
+
+  Preuve par induction incomplète, le deuxième cas à prouver a été prouvé de manière similaire au premier ("by blast+").
+
+\item sound\_and\_complete
+
+  Cette preuve fut la plus compliquée, elle se fait par induction sur rexp en spécifiant un w arbitraire. Nous n'avons pas réussi à la terminer.
+
+\item delta\_conv\_steps
+
+  Prouvée par induction sur w
+
+\item accepts\_conv\_steps
+
+  Prouvée par simplification
+
+\end{itemize}
+
+\subsection{Opérateur interleave}
 
 
 \section{Arbres de Décision}
